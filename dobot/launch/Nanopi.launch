@@ -1,0 +1,14 @@
+<launch>
+
+  <arg name="model" default="$(find dobot)/urdf/robot1.urdf"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <node name="joint_state_publisher" pkg="dobot" type="joint_state_publisher.py" />
+  <node name="moving" pkg="dobot" type="moving.py" />
+  <node name="ReverceKinematicService" pkg="dobot" type="SetPointUSB.py" />
+  <node name="serviceHandler" pkg="dobot" type="serviceHandler.py" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+  <node name="JsConventer" pkg="dobot" type="Dobot.py" respawn="true" />
+
+</launch>
+

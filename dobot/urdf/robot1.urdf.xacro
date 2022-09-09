@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<robot name="dobot">
+	<material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.006535 -0.0812 0"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/0part.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+
+<link name="link_1">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.006535 -0.0812 -0.1"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/1part.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
+<link name="link_2">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.006535 -0.0812 -0.143"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/2.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+</link>
+
+<link name="link_2_1">
+    <visual>
+      <origin rpy="0 0.57 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/sterz2_1.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+</link>
+<link name="link_3">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.119 -0.0813 -0.217"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/3.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+</link>
+<link name="triangle">
+    <visual>
+      <origin rpy="0 0.16 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/trianglestab.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+</link>
+
+<link name="link_3_1">
+    <visual>
+      <origin rpy="0 -0.65 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/sterz3_1.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+</link>
+
+<link name="link_4">
+    <visual>
+      <origin rpy="0 0 0" xyz="0.272 -0.079 -0.16"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/raborg.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+</link>
+
+<link name="gripper">
+  <visual>
+    <origin rpy="0 0 0" xyz="0.272 -0.079 -0.16"/>
+    <geometry>
+      <mesh filename="package://dobot/urdf/meshes/gripper.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="black"/>
+  </visual>
+</link>
+
+
+
+<joint name="0-1" type="revolute">
+  	<axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-2.39" upper="2.108" velocity="1"/>
+			<parent link="base_link"/>
+			<child link="link_1"/>
+			<origin xyz="0 0 0.1" rpy="0 0 0"/>
+</joint>
+		 
+<joint name="1-2" type="revolute">
+  	<axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-0.18" upper="1.77" velocity="1"/>
+			<parent link="link_1"/>
+			<child link="link_2"/>
+			<origin xyz="0 0 0.042" rpy="0 0 0"/>
+		</joint>
+	<joint name="1-2_1" type="revolute">
+  	<axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-6.28" upper="6.28" velocity="1"/>
+			<parent link="link_1"/>
+			<child link="link_2_1"/>
+			<origin xyz="0.04 -0.009 0.0625" rpy="0 0 0"/>
+		</joint>
+<joint name="2-3" type="revolute">
+  	<axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-0.34" upper="1.12" velocity="1"/>
+			<parent link="link_2"/>
+			<child link="link_3"/>
+			<origin xyz="-0.11246 0 0.0744" rpy="0 0 0"/>
+		</joint>
+		<joint name="2_1-triangle" type="revolute">
+  	<axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-6.28" upper="6.28" velocity="1"/>
+			<parent link="link_2_1"/>
+			<child link="triangle"/>
+			<origin xyz="-0.1137 0.005 0.073" rpy="0 0 0"/>
+		</joint>
+
+
+	<joint name="triangle-3_1" type="revolute">
+  		<axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-6.28" upper="6.28" velocity="1"/>
+			<parent link="triangle"/>
+			<child link="link_3_1"/>
+			<origin xyz="-0.071 0 0.0115" rpy="0 0 0"/>
+	</joint>
+
+
+	<joint name="3_1-4" type="revolute">
+  		<axis xyz="0 1 0"/>
+    <limit effort="1000.0" lower="-6.28" upper="6.28" velocity="1"/>
+			<parent link="link_3_1"/>
+			<child link="link_4"/>
+			<origin xyz="-0.117 0 -0.0888" rpy="0 0 0"/>
+	</joint>
+
+  </robot>

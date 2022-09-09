@@ -1,0 +1,26 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"link_1" [label="link_1"];
+"link_2" [label="link_2"];
+"link_3" [label="link_3"];
+"link_2_1" [label="link_2_1"];
+"triangle" [label="triangle"];
+"link_3_1" [label="link_3_1"];
+"link_4" [label="link_4"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "0-1" [label="xyz: 0 0 0.1 \nrpy: 0 -0 0"]
+"0-1" -> "link_1"
+"link_1" -> "1-2" [label="xyz: 0 0 0.042 \nrpy: 0 -0 0"]
+"1-2" -> "link_2"
+"link_2" -> "2-3" [label="xyz: -0.11246 0 0.0744 \nrpy: 0 -0 0"]
+"2-3" -> "link_3"
+"link_1" -> "1-2_1" [label="xyz: 0.04 -0.009 0.0625 \nrpy: 0 -0 0"]
+"1-2_1" -> "link_2_1"
+"link_2_1" -> "2_1-triangle" [label="xyz: -0.1137 0.005 0.073 \nrpy: 0 -0 0"]
+"2_1-triangle" -> "triangle"
+"triangle" -> "triangle-3_1" [label="xyz: -0.071 0 0.0115 \nrpy: 0 -0 0"]
+"triangle-3_1" -> "link_3_1"
+"link_3_1" -> "3_1-4" [label="xyz: -0.117 0 -0.0888 \nrpy: 0 -0 0"]
+"3_1-4" -> "link_4"
+}
