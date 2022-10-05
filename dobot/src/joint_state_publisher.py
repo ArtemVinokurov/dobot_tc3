@@ -31,11 +31,6 @@ class JointsCrt:
 		new_msg.position.append(-new_msg.position[2]) #2_1_triangle
 		new_msg.position.append(new_msg.position[3]+self.j2) #triangle-3_1
 		new_msg.position.append(-new_msg.position[5]) #3_1-4
-		# msg.position.append(self.j1)
-		# msg.position.append(-self.j2+1)
-		# msg.position.append(0)
-		# msg.position.append(-self.j3+0.65)
-		# msg.position.append(-self.j4)
 		self.pub.publish(new_msg)
 
 if __name__ == '__main__':

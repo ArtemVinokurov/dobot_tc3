@@ -18,11 +18,11 @@ class JointsCrt:
 		self.q_dot_max = 1.57 / 2
 
 	def callback(self,data):
+		
 		q = [data.x, data.y, data.z]
-		print(q)
-
+		if q == self.q0:
+			return
 		time_move = self.calc_time(q)
-		print("time move: %s", time_move)
 
 		delta_t = 0.001
 		t = 0
@@ -38,10 +38,9 @@ class JointsCrt:
 			msg.y = q_curr[1]
 			msg.z = q_curr[2]
 			self.pub.publish(msg)
-		
 			time.sleep(delta_t)
 
-		self.q0 = q_curr	
+		self.q0 = q
 
 	def calc_time(self, q):
 		time_move = 0

@@ -43,7 +43,6 @@ def SetPoint(data):
         alpha3 = (
             m.pi - m.acos((m.pow(l3, 2)+m.pow(l4, 2)-m.pow(d, 2))/(2*l4*l3))) - alpha2
         if(True):
-        # if ((alpha1 < 2.108 and (alpha1 > -2.395) and (alpha2 > -0.184) and (alpha2 < 2) and (alpha3 > -0.3403392) and (alpha3 < 2))):
             msg = Point()
             msg.x = alpha1
             msg.y = alpha2
@@ -52,7 +51,6 @@ def SetPoint(data):
             
             device.move_to(X, Y, Z, 0, wait=True)
             device.suck(data.suck)
-            time.sleep(2)
 
             return True
         else:

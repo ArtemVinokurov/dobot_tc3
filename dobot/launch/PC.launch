@@ -1,15 +1,11 @@
 <launch>
 
-  <include file="$(find dobot)/launch/DobotSimulation.launch" />
 
-  <!-- <include file="$(find tc3-ros-package)/launch/tc3.launch" /> -->
-
-  <arg name="model" default="$(find dobot)/urdf/robot1.urdf"/>
-  <arg name="gui" default="true" />
-  <arg name="rvizconfig" default="$(find dobot)/rviz/model.rviz" />
-  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
-  <param name="use_gui" value="$(arg gui)"/>
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <include file="$(find dobot)/launch/PC_sim.launch" />
+  <include file="$(find tc3-ros-package)/launch/tc3.launch" />
+  <node name="MovingBall" pkg="dobot" type="moving_balls.py" output="screen" />
+  <node name="DobotControl" pkg="dobot" type="dobot_control.py" />
+  
 
 </launch>
 

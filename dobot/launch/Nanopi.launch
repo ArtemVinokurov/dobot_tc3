@@ -1,6 +1,8 @@
 <launch>
 
+  <include file="$(find tc3-ros-package)/launch/tc3.launch" />
   <node name="DobotControl" pkg="dobot" type="dobot_control.py" />
+  <node name="MovingBall" pkg="dobot" type="moving_balls.py" output="screen" />
 
 </launch>
 

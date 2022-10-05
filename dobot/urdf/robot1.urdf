@@ -18,7 +18,7 @@
 
   <link name="black_pallet">
     <visual>
-      <origin rpy="0 0 3.14" xyz="0.0 0.0 0.01"/>
+      <origin rpy="0 0 3.14" xyz="0.0 0.0 0.02"/>
       <geometry>
         <mesh filename="package://dobot/urdf/meshes/black_pallet.stl" scale="0.001 0.001 0.001"/>
       </geometry>
@@ -39,17 +39,27 @@
   </link>
 
   <joint name="black_pallet_fix" type="fixed">
-    <parent link="base_link"/>
+    <parent link="base"/>
     <child link="black_pallet"/>
-    <origin rpy="0 0 0" xyz="-0.3 0.2 0"/>
+    <origin rpy="0 0 0" xyz="-0.29 0.15 0"/>
   </joint>
 
   <joint name="pallet_fix" type="fixed">
-    <parent link="base_link"/>
+    <parent link="base"/>
     <child link="pallet"/>
-    <origin rpy="0 0 0" xyz="-0.25 0.0 0"/>
+    <origin rpy="0 0 0" xyz="-0.25 -0.03 0"/>
   </joint>
 
+
+  <link name="base">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.08 0"/>
+      <geometry>
+        <mesh filename="package://dobot/urdf/meshes/base.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="white"/>
+    </visual>
+  </link>
   
   <link name="base_link">
     <visual>
@@ -133,6 +143,12 @@
       <material name="black"/>
     </visual>
   </link>
+
+  <joint name="base_fix" type="fixed">
+    <parent link="base"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.04"/>
+  </joint>
 
 
   <joint name="0-1" type="revolute">

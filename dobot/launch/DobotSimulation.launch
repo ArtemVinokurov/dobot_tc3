@@ -2,15 +2,18 @@
 
   <arg name="model" default="$(find dobot)/urdf/robot1.urdf"/> -->
   <arg name="gui" default="false" />
-  <!-- <arg name="rvizconfig" default="$(find dobot)/rviz/model.rviz" /> -->
+  <arg name="rvizconfig" default="$(find dobot)/rviz/model.rviz" />
+
 
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)" /> -->
   <param name="use_gui" value="$(arg gui)"/>
+
   <node name="joint_state_publisher" pkg="dobot" type="joint_state_publisher.py" /> -->
   <node name="moving" pkg="dobot" type="moving.py" output="screen" />
-  <!-- <node name="ReverceKinematicService" pkg="dobot" type="SetPoint.py" />  -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
-  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" /> -->
+  <node name="ReverceKinematicService" pkg="dobot" type="SetPointSim.py" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  <node name="spawn_mark" pkg="dobot" type="spawn_mark.py" output="screen" />
   <node name="JsConventer" pkg="dobot" type="Dobot.py" respawn="true" />
-
+  
 </launch>
