@@ -68,10 +68,11 @@ def main():
 
     # Loading protobuf types and hashes
     motorcortex_types = motorcortex.MessageTypes()
+    camera_ip = rospy.get_param("/tc3_node/camera_ip")
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     req, sub = motorcortex.connect(
-        "ws://" + "192.168.42.1" + ":5558:5557",
+        "ws://" + camera_ip + ":5558:5557",
         motorcortex_types,
         parameter_tree,
         # certificate=dir_path + "/motorcortex.crt",
