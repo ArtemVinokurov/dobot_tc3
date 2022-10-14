@@ -25,7 +25,7 @@ class DobotControl:
         self.pub_pose = rospy.Publisher("/robot_pose", Point, queue_size=10)
         self.pub_suck = rospy.Publisher("/suck_on", Bool, queue_size=2)
         period = rospy.Duration(0.01)
-        self.timer = rospy.Timer(period, self.robot_pose)
+        #self.timer = rospy.Timer(period, self.robot_pose)
 
         self.l1 = 80
         self.l2 = 0
@@ -84,8 +84,8 @@ class DobotControl:
 
     def HomeInit(self, data):
         try:
-            #(x, y, z, r, j1, j2, j3, j4) = self.device.pose()
-            self.device.move_to(self.x, self.y, 0, 0, wait=False)
+            (x, y, z, r, j1, j2, j3, j4) = self.device.pose()
+            self.device.move_to(x, y, 0, 0, wait=False)
             self.device._set_home_cmd()
             self.device.move_to(0, -200, 0, 0, wait=False)
             msg_init = Point()

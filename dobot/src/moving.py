@@ -12,10 +12,14 @@ class JointsCrt:
 
 		self.q0 = [0.0, 0.0, 0.0]
 		
+		
 		self.sub = rospy.Subscriber("/Point", Point, self.callback)
 		self.pub = rospy.Publisher("/joints", Point, queue_size=10)
 
 		self.q_dot_max = 1.57 / 2
+
+
+
 
 	def callback(self,data):
 		
